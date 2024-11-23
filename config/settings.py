@@ -1,0 +1,2 @@
+DATABASE_PATH = "db.sqlite3"
+LOGGING_ENABLED = True

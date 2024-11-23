@@ -1,0 +1,119 @@
+/* Общие стили для всего документа */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Контейнер для формы */
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1000px;
+    margin-top: 40px;
+}
+
+/* Стили для левой части (аватар и дата рождения) */
+.profile-left {
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-left img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-left input[type="file"] {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Стили для правой части (поля формы) */
+.profile-right {
+    width: 65%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-right form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-right label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.profile-right input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.profile-right input:focus {
+    border-color: #007bff;
+}
+
+/* Кнопка для обновления профиля */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}

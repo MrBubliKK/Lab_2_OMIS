@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали отчета</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='report_details.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Детали отчета</h1>
+        </header>
+
+        <section class="report-info">
+            <h2>{{ report.name }}</h2>
+            <p><strong>Описание:</strong> {{ report.info }}</p>
+            <p><strong>Дата создания:</strong> {{ report.created_at }}</p> <!-- Новое поле -->
+        </section>
+
+        <section class="user-info">
+            <h3>Информация о пользователе:</h3>
+            <p><strong>Логин:</strong> {{ report.user_info[0] if report.user_info else "Не указано" }}</p>
+            <p><strong>Должность:</strong> {{ report.user_info[1] if report.user_info else "Не указано" }}</p>
+        </section>
+
+        <footer>
+            <a href="{{ url_for('routes.reports', user_id=report.user_id) }}" class="btn back-btn">Вернуться к отчетам</a>
+        </footer>
+    </div>
+</body>
+</html>

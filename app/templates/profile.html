@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование профиля</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Левая часть (аватар и дата рождения) -->
+         <div class="profile-left">
+            <img class="avatar" src="{{ url_for('uploaded_file', filename=user.avatar) }}" alt="Avatar">
+            <form method="POST" enctype="multipart/form-data" action="{{ url_for('routes.profile', user_id=user.id) }}">
+                <label for="avatar">Изменить аватар</label>
+                <input type="file" id="avatar" name="avatar" accept="image/*">
+                <button type="submit">Загрузить аватар</button>
+            </form>
+            <label for="birthdate">Дата рождения</label>
+            <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}">
+        </div>
+
+        <!-- Правая часть (поля для редактирования профиля) -->
+        <div class="profile-right">
+            <h1>Редактирование профиля для {{ user.username }}</h1>
+
+            <!-- Блок для отображения flash сообщений -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ user.username }}">
+
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" value="{{ user.role }}">
+
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login" value="{{ user.login }}">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="{{ user.password }}">
+
+                <button type="submit">Обновить профиль</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="{{ url_for('routes.main_menu', user_id=user.id) }}">Назад в главное меню</a>
+</body>
+</html>

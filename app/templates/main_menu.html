@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главное меню</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main_menu.css') }}">
+</head>
+<body>
+    <!-- Контейнер для всего контента -->
+    <div class="content-container">
+        <!-- Вывод приветствия пользователю -->
+        <h1>Добро пожаловать, {{ user.username }}!</h1>
+
+        <!-- Блок для flash-сообщений -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Форма с кнопками для выбора действия -->
+        <form method="POST">
+            {% if user.role == 'operator' %}
+                <button type="submit" name="choice" value="1">Профиль</button>
+                <button type="submit" name="choice" value="2">Отчёты</button>
+                <button type="submit" name="choice" value="3">Проверка</button>
+                <button type="submit" name="choice" value="6">Выход</button>
+            {% elif user.role == 'engineer' %}
+                <button type="submit" name="choice" value="1">Профиль</button>
+                <button type="submit" name="choice" value="2">Отчёты</button>
+                <button type="submit" name="choice" value="3">Проверка</button>
+                <button type="submit" name="choice" value="4">Анализ данных</button>
+                <button type="submit" name="choice" value="6">Выход</button>
+            {% elif user.role == 'manager' %}
+                <button type="submit" name="choice" value="1">Профиль</button>
+                <button type="submit" name="choice" value="2">Отчёты</button>
+                <button type="submit" name="choice" value="6">Выход</button>
+            {% elif user.role == 'technologist' %}
+                <button type="submit" name="choice" value="1">Профиль</button>
+                <button type="submit" name="choice" value="5">Оборудование</button>
+                <button type="submit" name="choice" value="6">Выход</button>
+            {% else %}
+                <p>Ваши действия ограничены.</p>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

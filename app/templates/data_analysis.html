@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки отображения проверок</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='data_analysis.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Настройки отображения проверок оборудования</h1>
+        </header>
+
+        <section class="form-section">
+            <h2>Управление отображением</h2>
+            <form method="POST" class="settings-form">
+                <div class="checkbox-group">
+                    <label for="show_date">Показать дату всех проверок:</label>
+                    <input type="checkbox" id="show_date" name="show_date" {% if show_date %}checked{% endif %}>
+                </div>
+                <div class="checkbox-group">
+                    <label for="show_count">Показать количество всех проверок:</label>
+                    <input type="checkbox" id="show_count" name="show_count" {% if show_count %}checked{% endif %}>
+                </div>
+                <div class="checkbox-group">
+                    <label for="show_fallability">Показать вероятность отказа всех проверок:</label>
+                    <input type="checkbox" id="show_fallability" name="show_fallability" {% if show_fallability %}checked{% endif %}>
+                </div>
+                <button type="submit" class="submit-btn">Обновить настройки отображения</button>
+            </form>
+        </section>
+
+        <section class="checks-section">
+            <h2>Список проверок</h2>
+            <table class="checks-table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Дата</th>
+                        <th>Количество</th>
+                        <th>Вероятность отказа</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for check in checks %}
+                        <tr>
+                            <td>{{ check.name }}</td>
+                            <td>
+                                {% if check.display_date %}
+                                    {{ check.date }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if check.display_count %}
+                                    {{ check.settings.count }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if check.display_fallability %}
+                                    {{ check.settings.fallability }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="footer">
+            <a href="{{ url_for('routes.main_menu', user_id=user_id) }}" class="back-btn">Назад в меню</a>
+        </footer>
+    </div>
+</body>
+</html>

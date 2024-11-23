@@ -1,0 +1,98 @@
+/* Основная стилизация для блоков */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Стили для формы */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Стили для вывода оборудования и тестов */
+.equipment-list, .test-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.equipment-item, .test-item {
+    margin: 10px 0;
+}
+
+.equipment-item label, .test-item label {
+    display: flex;
+    align-items: center;
+}
+
+.equipment-name, .test-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.equipment-id {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.test-details {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}

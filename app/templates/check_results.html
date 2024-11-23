@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты проверки</title>
+</head>
+<body>
+    <h1>Результаты проверки</h1>
+    <ul>
+        {% for result in results %}
+            <li>Проверка "{{ result.check_name }}": Средний результат — {{ result.average_percentage }}%</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('routes.check_menu', user_id=user_id) }}">Вернуться к проверкам</a>
+</body>
+</html>

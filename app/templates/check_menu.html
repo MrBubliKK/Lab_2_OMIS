@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню проверок</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='check_menu.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Меню проверок</h1>
+        </header>
+
+        <!-- Блок для отображения flash-сообщений -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="content">
+            <!-- Раздел создания теста -->
+            <section class="create-test-section">
+                <h2>Создать новый тест</h2>
+                <form method="POST" class="create-test-form">
+                    <input type="hidden" name="create_test" value="1">
+                    <div class="form-group">
+                        <label for="test_name">Название теста:</label>
+                        <input type="text" id="test_name" name="test_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Вес:</label>
+                        <input type="number" id="weight" name="weight" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Размер:</label>
+                        <input type="number" id="size" name="size" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="temperature">Температура:</label>
+                        <input type="number" id="temperature" name="temperature" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Создать тест</button>
+                </form>
+            </section>
+
+            <!-- Раздел запуска проверки -->
+            <section class="run-check-section">
+                <h2>Запустить проверку</h2>
+                <form method="POST" class="run-check-form">
+                    <input type="hidden" name="run_check" value="1">
+
+                    <div class="form-group">
+                        <label for="check_name">Название проверки:</label>
+                        <input type="text" id="check_name" name="check_name" required>
+                    </div>
+
+                    <h3>Выберите оборудование:</h3>
+                    <div class="equipment-list">
+                        <ul>
+                            {% for equipment in equipment %}
+                            <li class="equipment-item">
+                                <label>
+                                    <input type="radio" name="equipment_id" value="{{ equipment.id }}">
+                                    <span class="equipment-name">{{ equipment.name }}</span>
+                                    <span class="equipment-id">ID: {{ equipment.id }}</span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <h3>Выберите тесты:</h3>
+                    <div class="test-list">
+                        <ul>
+                            {% for test in tests %}
+                            <li class="test-item">
+                                <label>
+                                    <input type="checkbox" name="test_ids" value="{{ test.id }}">
+                                    <span class="test-name">{{ test.name }}</span>
+                                    <span class="test-details">(Вес: {{ test.weight }} | Размер: {{ test.size }} | Температура: {{ test.temperature }})</span>
+                                </label>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Запустить проверку</button>
+                </form>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <a href="{{ url_for('routes.main_menu', user_id=user_id) }}" class="back-btn">Назад в меню</a>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* Основной контейнер */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Формы */
+.form-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Формы в строку (левая и правая части) */
+.form-row {
+    display: flex;
+    gap: 40px;
+}
+
+/* Левая часть формы (аватар и роль) */
+.form-left {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-left label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-left input[type="file"],
+.form-left #role {
+    width: 100%;
+}
+
+/* Правая часть формы (поля ввода) */
+.form-right {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-right label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-right input[type="text"],
+.form-right input[type="password"],
+.form-right input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Кнопка */
+.register-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.register-button:hover {
+    background-color: #45a049;
+}
+
+/* Ссылки */
+.login-link {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* Вывод сообщений об ошибках */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    background-color: #ffdddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
+}

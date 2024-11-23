@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список оборудования</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='equipment_list.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Список оборудования</h1>
+        </header>
+
+        <section class="equipment-list-section">
+            <h2>Все доступные устройства</h2>
+            <form method="POST">
+                <table class="equipment-table">
+                    <thead>
+                        <tr>
+                            <th>Название оборудования</th>
+                            <th>Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in equipment %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>
+                                    <a href="{{ url_for('routes.edit_equipment', equipment_id=item.id, user_id=user_id) }}">
+                                        <button type="button" class="edit-btn">Редактировать</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <a href="{{ url_for('routes.main_menu', user_id=user_id) }}" class="back-btn">Назад в меню</a>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/* Стиль для всего документа */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Контейнер для основного контента */
+.content-container {
+    text-align: center; /* Центрируем все элементы в контейнере */
+    width: 100%;
+    max-width: 600px; /* Устанавливаем максимальную ширину для контента */
+    margin: 20px;
+}
+
+/* Заголовок для приветствия */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Блок для flash-сообщений */
+.flash-messages {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffeb3b;
+    border-radius: 5px;
+    border: 1px solid #fbc02d;
+}
+
+.flash-messages ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.flash-messages li {
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Стили для кнопок */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+    width: 250px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Стиль для ограниченного доступа */
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff5722;
+    margin-top: 20px;
+}

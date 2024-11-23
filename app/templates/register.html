@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+    <div class="register-container">
+        <div class="form-section">
+            <h1>Регистрация</h1>
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-row">
+                    <!-- Левая часть (аватар и роль) -->
+                    <div class="form-left">
+                        <!-- Загрузка аватара -->
+                        <label for="avatar">Загрузить аватар</label>
+                        <input type="file" id="avatar" name="avatar" accept="image/*">
+
+                        <!-- Роль пользователя -->
+                        <label for="role">Выберите роль:</label>
+                        <div id="role">
+                            <label>
+                                <input type="radio" name="role" value="operator" required> Оператор
+                            </label>
+                            <label>
+                                <input type="radio" name="role" value="engineer"> Инженер
+                            </label>
+                            <label>
+                                <input type="radio" name="role" value="technologist"> Технолог
+                            </label>
+                            <label>
+                                <input type="radio" name="role" value="manager"> Менеджер
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Правая часть (поля ввода) -->
+                    <div class="form-right">
+                        <!-- Имя пользователя -->
+                        <label for="username">Имя пользователя:</label>
+                        <input type="text" id="username" name="username" required>
+
+                        <!-- Логин -->
+                        <label for="login">Логин:</label>
+                        <input type="text" id="login" name="login" required>
+
+                        <!-- Пароль -->
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+
+                        <!-- Дата рождения -->
+                        <label for="birthdate">Дата рождения:</label>
+                        <input type="date" id="birthdate" name="birthdate" required>
+
+                        <!-- Кнопка для отправки -->
+                        <button type="submit" class="register-button">Зарегистрироваться</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Ссылка на авторизацию -->
+            <p>Есть аккаунт? <a href="{{ url_for('routes.authenticate') }}" class="login-link">Войти</a></p>
+
+            <!-- Вывод сообщений об ошибках -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>

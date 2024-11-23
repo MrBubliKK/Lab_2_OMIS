@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование оборудования</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_equipment.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Редактирование оборудования: {{ equipment.name }}</h1>
+        </header>
+
+        <section class="edit-form-section">
+            <form method="POST" class="edit-form">
+                <label for="name">Название:</label>
+                <input type="text" id="name" name="name" value="{{ equipment.name }}" class="input-field"><br>
+
+                <label for="weight">Вес:</label>
+                <input type="number" id="weight" name="weight" value="{{ equipment.settings['weight'] }}" class="input-field"><br>
+
+                <label for="size">Размер:</label>
+                <input type="number" id="size" name="size" value="{{ equipment.settings['size'] }}" class="input-field"><br>
+
+                <label for="temperature">Температура:</label>
+                <input type="number" id="temperature" name="temperature" value="{{ equipment.settings['temperature'] }}" class="input-field"><br>
+
+                <label for="condition">Состояние:</label>
+                <select name="condition" id="condition" class="input-field">
+                    <option value="True" {% if equipment.condition %}selected{% endif %}>Рабочее</option>
+                    <option value="False" {% if not equipment.condition %}selected{% endif %}>Не рабочее</option>
+                </select><br>
+
+                <button type="submit" class="submit-btn">Сохранить изменения</button>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <a href="{{ url_for('routes.equipment_list', user_id=user_id) }}" class="back-btn">Назад в список</a>
+        </footer>
+    </div>
+</body>
+</html>

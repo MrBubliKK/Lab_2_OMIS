@@ -1,0 +1,37 @@
+<!-- templates/authenticate.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='authenticate.css') }}">
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Вход в систему</h1>
+        <form method="POST" class="auth-form">
+            <label for="login">Логин:</label>
+            <input type="text" id="login" name="login" required><br><br>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <button type="submit" class="auth-button">Авторизация</button>
+        </form>
+
+        <p>Нет аккаунта? <a href="{{ url_for('routes.register') }}" class="register-link">Зарегистрироваться</a></p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

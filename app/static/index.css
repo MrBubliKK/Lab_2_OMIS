@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Светло-голубой фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #333; /* Темно-серый текст */
+    margin-bottom: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.start-button {
+    display: inline-block;
+    background-color: #007BFF; /* Голубой цвет */
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.start-button:hover {
+    background-color: #0056b3; /* Более темный голубой */
+}
+
+.exit-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #dc3545; /* Красный цвет */
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.exit-button:hover {
+    background-color: #a71d2a; /* Более темный красный */
+}
